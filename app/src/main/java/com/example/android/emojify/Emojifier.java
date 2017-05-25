@@ -42,6 +42,7 @@ class Emojifier {
         FaceDetector detector = new FaceDetector.Builder(context)
                 .setTrackingEnabled(false)
                 .setClassificationType(FaceDetector.ALL_CLASSIFICATIONS)
+                .setLandmarkType(FaceDetector.ALL_LANDMARKS)
                 .build();
 
         // Build the frame
@@ -56,6 +57,9 @@ class Emojifier {
         // If there are no faces detected, show a Toast message
         if(faces.size() == 0){
             Toast.makeText(context, R.string.no_faces_message, Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(context,"detected "+faces.size()+" face(s)" , Toast.LENGTH_SHORT).show();
         }
 
         // Release the detector
